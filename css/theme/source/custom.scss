@@ -1,0 +1,275 @@
+@import 'white';
+
+$codeBgColor: #181818;
+$dequeLogoColor: #00274d;
+$dequeBgColor: #BFC9D3;
+$accentColor: #8dc63f;
+
+$tablet: 'screen and (max-width: 1024px)';
+$mobile: 'screen and (max-width: 600px)';
+
+.reveal {
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: none;
+  }
+  .h1-style {
+    @extend h1;
+  }
+  .h2-style {
+    @extend h2;
+  }
+  .h3-style {
+    @extend h3;
+  }
+  .h4-style {
+    @extend h4;
+  }
+  .subhead {
+    @extend h4;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .all-caps {
+    text-transform: uppercase;
+  }
+  .offscreen {
+    position: absolute;
+    left: -500000px;
+  }
+  .progress {
+    background-color: $dequeBgColor;
+    height: 15px;
+
+    span {
+      background: $accentColor;
+      box-shadow: 2px 1px 3px #666;
+    }
+  }
+  .controls {
+    bottom: 110px;
+  }
+
+  pre code {
+    font-family: Menlo, Courier, monospace;
+    max-height: 520px;
+  }
+  figure.code {
+    box-sizing: border-box;
+    position: relative;
+    width: 90%;
+
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+
+    pre {
+      box-shadow: none;
+      margin-bottom: 0;
+      width: 100%;
+
+      &+ figcaption {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #000;
+        font-size: 0.8em;
+        font-style: normal;
+        font-weight: bold;
+        margin-bottom: 25px;
+        padding: 10px 0 10px 20px;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+  .regular-case {
+    text-transform: none;
+  }
+  .subhead {
+    font-style: italic;
+    @extend .regular-case;
+  }
+  .plain {
+    background-color: transparent;
+  }
+}
+/*********************************************
+ * LAYOUTS
+ *********************************************/
+.reveal li .twoThirdsCol {
+  padding-top: 2%;
+
+  small {
+    clear: both;
+    display: block;
+    text-align: center;
+  }
+}
+.reveal .wideCol {
+  vertical-align: top;
+  width: 54%;
+
+  &.twoThirdsCol {
+    float: left;
+  }
+}
+.reveal .skinnyCol {
+  vertical-align: top;
+  width: 44%;
+
+  &.twoThirdsCol {
+    float: left;
+    margin-right: 2%;
+  }
+}
+.reveal .twoThirdsCol pre {
+  font-size: .59em;
+  margin-top: 0;
+  width: 100%;
+}
+.reveal .halfCol {
+  display: inline-block;
+  width: 48%;
+}
+
+.reveal .layeredFragments {
+  margin: 0 auto;
+  min-height: 1000px;
+  position: relative;
+  width: 100%;
+
+  &>img, 
+  &>figure {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: 0;
+    width: 100%;
+  }
+  &.wordcloud {
+    position: absolute;
+    top: 0;
+
+    .fragment {
+      position: absolute;
+    }
+  }
+}
+.reveal {
+  .responsive-video {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+
+    iframe, object, embed, video {
+      position:absolute;
+      top: 0;
+      left: 0;
+      max-height: 720px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+/*********************************************
+ * Custom Slides
+ *********************************************/
+
+.deque-title-slide {
+  &.slide-background:after {
+    background-color: $dequeBgColor;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 100px;
+    max-height: 10%;
+    position: absolute;
+    width: 100%;
+  }
+  .left {
+    float: left;
+  }
+    img.deque {
+      max-width: 400px;
+      margin: -8% 0 0;
+    }
+  .right {
+    float: right;
+    padding-top: 8%;
+    text-align: left;
+    width: 65%;
+  }
+  @media #{$tablet} {
+    &.slide-background:after {
+      display: none;
+    }
+    .left {
+      img.deque {
+        max-width: 300px;
+      }
+    }
+    .right {
+      h1 {
+        font-size: 1.5em;
+      }
+    }
+  }
+  @media #{$mobile} {
+    .left {
+      float: none;
+      img.deque {
+        margin: 0 auto;
+      }
+    }
+    .right {
+      float: none;
+      margin: 0 auto;
+      width: 90%;
+      h1 {
+        font-size: 1.5em;
+        text-align:  center;
+      }
+      p {
+        font-size: 0.75em;
+      }
+    }
+  }
+}
+
+#wallace-gromit {
+  background: $codeBgColor url(../../img/wallace-gromit.jpg) no-repeat top right;
+  padding-bottom: 33px;
+
+  code {
+    background-color: transparent;
+  }
+}
+#oh-hai-images {
+  margin-top: 1em;
+  text-align: center;
+
+  img, div {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  div {
+    max-width: 320px;
+    margin: 0 20px 0 10px;
+    text-align: center;
+  }
+  .angular {
+    max-width: 300px;
+  }
+  .axe {
+    background-color: #fff;
+    padding: 10px;
+    width: 300px;
+  }
+  .gdi {
+    max-width: 250px;
+  }
+  .slack {
+    max-width: 320px;
+  }
+}
