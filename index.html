@@ -67,7 +67,268 @@
 				</section>
 
 				<section>
-					
+					<h2>What is accessibility?</h2>
+					<h3><a href="http://www.w3.org/WAI/intro/accessibility.php" target="_blank" title="Link opens in a new window">W3.org</a></h3>
+        	<blockquote style="font-style: normal;">
+        		<p>The Web is fundamentally designed to work for all people, whatever their hardware, software, language, culture, location, or physical or mental ability.</p>
+        	</blockquote>
+        </section>
+	
+				<section>
+					<h2 class="h1-style">Accessibility<br>
+						<span class="subhead">means</span>
+						EVERYONE<br>
+						<span class="subhead">can use the Web.</span>
+					</h2>
+				</section>
+
+				<section>
+					<h3 class="h2-style">People with Disabilities</h3>
+					<ul>
+						<li><strong>Visual:</strong> Blind, low-vision, color blind</li>
+						<li><strong>Hearing:</strong> Deaf, hard-of-hearing</li>
+						<li><strong>Motor:</strong> spinal cord injury, MS, Cerebral palsy, ALS</li>
+						<li><strong>Cognitive:</strong> Autism, learning, TBI, memory, attention</li>
+					</ul>
+				</section>
+
+        <section>
+	        <h2>Test automation?</h2>
+	        <img data-src="img/whew.gif" class="plain" alt="Toni Braxton saying 'whew' and sliding into her chair next to a baby" style="min-width: 700px;">
+        </section>
+
+        <section>
+	        <h2>
+	        	Accessibility &amp; Automated Testing
+		        <span class="subhead">sitting in a tree...</span>
+	        </h2>
+	        <ul>	
+		        <li class="fragment">Test low-hanging fruit</li>
+	        	<li class="fragment">Document accessibility intent</li>
+		        <li class="fragment">Prevent regressions</li>
+		        <li class="fragment">Get help from experts</li>
+	        </ul>
+	        <aside class="notes">
+						NOT a substitute for actual user testing
+	        </aside>
+        </section>
+
+        <section>
+					<h2>The A11Y Testing Situation</h2>
+					<p>We can test browsers, but not assistive technologies (yet).</p>
+					<p class="fragment">Best practices and visualization tools help here.</p>
+        </section>
+
+        <section data-background-image="img/axe-tag-cloud.png" data-transition="fade-in">
+	        <h2 class="h1-style" style="background-color: #fff; display: inline-block; margin-bottom: 0.5em;">Test low-hanging fruit</h2>
+	        <!-- axe-chrome extension demo -->
+	        <!-- axe-firefox extension demo -->
+        </section>
+
+        <section data-background-image="img/axe-chrome-extension-install.png">
+        	<h3 style="height:1000px">
+        		<a style="display:block;width:100%;height:100%;" href="https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US" title="Opens in a new window" target="_blank"><span class="offscreen">aXe chrome extension</span></a>
+        	</h3>
+        </section>
+
+        <section data-background-image="img/axe-firefox-extension-install.png">
+        	<h3 style="height:1000px">
+        		<a style="display:block;width:100%;height:100%;" href="https://addons.mozilla.org/en-us/firefox/addon/axe-devtools/" title="Opens in a new window" target="_blank"><span class="offscreen">aXe firefox extension</span></a>
+        	</h3>
+        </section>
+
+        <section>
+	        <h3 class="h2-style">Demo</h3>
+        </section>
+
+        <section>
+	        <h2 class="h1-style">Document Accessibility Intent<br>
+	        	<span class="subhead">with Unit Tests</span>
+	        </h2>
+        </section>
+
+        <section data-background="img/desaturated-streetart-inverted.jpg">
+        	<h3>Documenting a11y with unit tests (1/2)</h3>
+        	<figure class="code">
+        	<pre><code class="javascript">
+  it('should focus `md-dialog-content` on open', 
+    inject(function($mdDialog, $rootScope, $document) {
+        jasmine.mockElementFocus(this);
+
+        var parent = angular.element('&lt;div>');
+
+        $mdDialog.show(
+          $mdDialog.alert({
+            template: '&lt;md-dialog>' +
+            '&lt;md-dialog-content tabIndex="0" md-autofocus>' +
+            '&lt;p>Muppets are the best&lt;/p>' +
+            '&lt;/md-dialog-content>' +
+            '&lt;/md-dialog>',
+          parent: parent
+        })
+      );
+      runAnimation(parent.find('md-dialog'));
+
+      expect($document.activeElement).toBe(parent[0].querySelector('md-dialog-content'));
+    }));
+        	</code></pre>
+        	<figcaption><a href="https://github.com/angular/material/blob/master/src/components/dialog/dialog.spec.js">Angular Material Dialog</a></figcaption>
+        	</figure>
+        </section>
+
+				<section data-background="img/desaturated-streetart-inverted.jpg">
+        	<h3>Documenting a11y with unit tests (2/2)</h3>
+        	<figure class="code">
+        	<pre><code class="javascript">
+  it('should apply aria-hidden="true" when parent has valid label', function() {
+    el = make('&lt;button aria-label="Android">&lt;md-icon md-svg-icon="android">&lt;/md-icon>&lt;/button>');
+
+    expect(el.find('md-icon').attr('aria-hidden')).toEqual('true');
+  });
+
+  it('should apply aria-hidden="true" when parent has text content', function() {
+    el = make('&lt;button>Android &lt;md-icon md-svg-icon="android">&lt;/md-icon>&lt;/button>');
+    expect(el.find('md-icon').attr('aria-hidden')).toEqual('true');
+  });
+        	</code></pre>
+        	<figcaption><a href="https://github.com/angular/material/blob/master/src/components/icon/icon.spec.js">Angular Material Icon</a></figcaption>
+        	</figure>
+        </section>
+
+        <section>
+					<h3>Unit Test Coverage to Consider</h3>
+					<ul>
+						<li>Keyboard interactivity</li>
+						<li>Component focus management</li>
+						<li>Label text generation</li>
+						<li>ARIA state changes</li>
+					</ul>
+        </section>
+
+        <section>
+	        <h2 class="h1-style">Prevent regressions<br>
+		        <span class="subhead">with test coverage</span>
+	        </h2>
+		    </section>
+
+		    <section>
+		    	<h3 class="h2-style">Tools for the job</h3>
+	        <ul>
+		        <li><a href="https://www.npmjs.com/package/axe-core">axe-core</a></li>
+		        <li><a href="https://www.npmjs.com/package/axe-webdriverjs">axe-webdriverjs</a></li>
+	        </ul>
+	        <!-- show npm workflow with packages / scripts -->
+	        <!-- axe-webdriverjs demo -->
+	        <!-- axe-core unit test demo -->
+        </section>
+
+        <section>
+	        <h3 class="h2-style">What is axe-core?</h3>
+	        <ul class="thumbsup">
+		        <li class="fragment">JavaScript library for accessibility testing</li>
+		        <li class="fragment">Engine powering browser extensions, integrations</li>
+		        <li class="fragment">A handy unit testing tool</li>
+		        <li class="fragment">Open source</li>
+	        </ul>
+        </section>
+
+        <section>
+	        <h3>Unit testing with axe-core</h3>
+	        <figure>
+		        <p style="line-height:1;font-size:0.75em;">Install from npm:</p>
+		        <pre><code class="bash">
+npm install axe-core --save-dev
+		        </code></pre>
+		    </figure>
+		    <figure class="fragment">
+		        <p style="line-height:1;font-size:0.75em;">Include script and run tests:</p>
+					<pre><code class="javascript">
+  var axe = require('axe-core');
+
+  describe('Custom component', function() {
+    it('should have no a11y violations', function(done) {
+      axe.a11yCheck('.some-element-selector', {}, function (results) {
+        expect(result.violations.length).toBe(0);
+        done();
+      });
+    });
+  });
+					</code></pre>
+				</figure>
+	        </section>
+
+	        <section>
+		        <h3 class="h2-style">aXe unit test demo</h3>
+	        </section>
+
+	        <section>
+		        <h3 class="h2-style">What is axe-webdriverjs?</h3>
+		        <p>A library that injects axe-core into Selenium Webdriver instances</p>
+		       </section>
+
+	        <section>
+		        <h3>Integration testing with axe-webdriverjs</h3>
+		        <figure>
+			        <pre><code class="bash">
+	npm install axe-webdriverjs --save-dev
+			        </code></pre>
+			    </figure>
+			    <figure>	  					
+			    <pre><code class="javascript">
+  var AxeBuilder = require('axe-webdriverjs'),
+      WebDriver = require('selenium-webdriver');
+ 
+  var driver = new WebDriver.Builder()
+    .forBrowser('firefox')
+    .build();
+ 
+  driver
+    .get('https://www.hillaryclinton.com/')
+    .then(function () {
+      AxeBuilder(driver)
+        .analyze(function (results) {
+          expect(results.violations.length).toBe(0);
+        });
+    });
+						</code></pre>
+					</figure>
+		        </section>
+
+		        <section>
+			        <h3 class="h2-style">aXe integration test demo</h3>
+		        </section>
+
+		        <section>
+			        <h2 class="h1-style">Get help from experts</h2>
+			        <!-- Talk about knowledge/experience built into rules/checks -->
+			        <!-- Promote Github repository/issues list, Gitter -->
+		        </section>
+
+		        <section>
+		        	<h3 style="margin-top: -3em;">The aXe Team <br>
+		        	<span class="subhead">(besides yours truly)</span></h3>
+		        	<div class="imgCarousel" id="maintainers">
+		        		<button data-alt="Dylan Barrell"><img data-src="img/dylanb.jpg" alt="Dylan Barrell"></button>
+		        		<button data-alt="Wilco Fiers"><img data-src="img/wilcof.jpg" alt="Wilco Fiers"></button>
+		        		<button data-alt="Ian Kelly"><img data-src="img/iank.jpg" alt="Ian Kelly"></button>
+		        	</div>
+		        <!-- Dylan, Wilco and Ian profile photos -->
+		        </section>
+
+		        <section data-background="img/gitter-axe-core.jpg" data-background-position="right">
+			        <div>
+			        <h3 style="height:1000px">
+		        		<a style="display:block;width:100%;height:100%;" href="https://gitter.im/dequelabs/axe-core" title="Opens in a new window" target="_blank"><span class="offscreen">axe-core Gitter page</span></a>
+		        	</h3>
+		        	</div>
+		        </section>
+
+		        <section data-background="img/axe-github-issues.jpg" data-background-position="right">
+			        <div>
+			        <h3 style="height:1000px">
+		        		<a style="display:block;width:100%;height:100%;" href="https://github.com/dequelabs/axe-core/issues" title="Opens in a new window" target="_blank"><span class="offscreen">axe-core Github issues page</span></a>
+		        	</h3>
+		        	</div>
 		        </section>
 
 				<section data-background-color="#ffffff">
@@ -118,6 +379,26 @@
 			});
 
 		</script>
+		<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		var carousel = document.getElementById('maintainers'),
+			buttons = carousel.querySelectorAll('button'),
+			caption = carousel.querySelector('figcaption');
 
+		for (var i=0; i<buttons.length; i++){
+			console.log(buttons[i]);
+			buttons[i].addEventListener('hover', function(event) {
+				console.log(event);
+			}, true);
+			buttons[i].addEventListener('focus', function(event) {
+				console.log(event.target);
+				// var target = event.target;
+				// var figcaption = target.querySelector('img').getAttribute('alt');
+
+				// caption.textContent = figcaption;
+			});
+		}
+	});
+		</script>
 	</body>
 </html>

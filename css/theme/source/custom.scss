@@ -26,6 +26,8 @@ $mobile: 'screen and (max-width: 600px)';
   }
   .subhead {
     @extend h4;
+    display: block;
+    font-size: 0.75em;
     font-style: italic;
     font-weight: bold;
   }
@@ -55,6 +57,7 @@ $mobile: 'screen and (max-width: 600px)';
   }
   figure.code {
     box-sizing: border-box;
+    margin: 0 auto;
     position: relative;
     width: 90%;
 
@@ -68,15 +71,19 @@ $mobile: 'screen and (max-width: 600px)';
       width: 100%;
 
       &+ figcaption {
-        background-color: rgba(255, 255, 255, 0.85);
-        color: #000;
+        background-color: #333;
+        color: #fff;
         font-size: 0.8em;
         font-style: normal;
         font-weight: bold;
         margin-bottom: 25px;
         padding: 10px 0 10px 20px;
-        text-align: left;
         width: 100%;
+
+        a {
+          color: #fff;
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -236,13 +243,37 @@ $mobile: 'screen and (max-width: 600px)';
     }
   }
 }
+.reveal ul.thumbsup {
+  list-style-image: url(../../img/thumbsup-sm.png);
+  list-style-position: inside;
+}
+.imgCarousel {
+  button {
+    display: inline-block;
+    max-width: 20%;
+    vertical-align: middle;
+    transition: max-width 0.5s ease-out;
 
-#wallace-gromit {
-  background: $codeBgColor url(../../img/wallace-gromit.jpg) no-repeat top right;
-  padding-bottom: 33px;
+    &:after {
+      content: '';
+      display: block;
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 0.5em 0;
+    }
 
-  code {
-    background-color: transparent;
+    &:hover,
+    &:focus {
+      max-width: 50%;
+
+      &:after {
+        content: attr(data-alt);
+      }
+    }
+  }
+  img {
+    height: 100%;
+    width: 100%;
   }
 }
 #oh-hai-images {

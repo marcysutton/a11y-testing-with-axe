@@ -196,24 +196,3 @@ body {
   width: 100%;
 }
 
-/*********************************************
- * Slide Styles
- *********************************************/
-.reveal #slide1 p {
-  font-size: 0.75em;
-  margin-bottom: 3%;
-
-  a.substantial-logo {
-  color: #fff;
-  font-family: 'substantial-ico-fonts';
-  letter-spacing: 0.3em;
-  margin-left: 2%;
-  position: relative;
-
-    &:hover, &:focus {
-      color: $linkColor;
-      text-decoration: none;
-      -webkit-transition: color 0.25s ease-out;
-    }
-  }
-}
