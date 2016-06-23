@@ -115,8 +115,8 @@
 
         <section>
 					<h2>The A11Y Testing Situation</h2>
-					<p>We can test browsers, but not assistive technologies (yet).</p>
-					<p class="fragment">Best practices and visualization tools help here.</p>
+					<p>We can automate testing in browsers, but not assistive technologies (yet).</p>
+					<p class="fragment">Best practices and development tools help here.</p>
         </section>
 
         <section data-background-image="img/axe-tag-cloud.png" data-transition="fade-in">
@@ -226,9 +226,9 @@
 	        <h3 class="h2-style">What is axe-core?</h3>
 	        <ul class="thumbsup">
 		        <li class="fragment">JavaScript library for accessibility testing</li>
-		        <li class="fragment">Engine powering browser extensions, integrations</li>
+		        <li class="fragment">Engine powering browser extensions, test integrations</li>
 		        <li class="fragment">A handy unit testing tool</li>
-		        <li class="fragment">Open source</li>
+		        <li class="fragment">Open source*</li>
 	        </ul>
         </section>
 
@@ -237,7 +237,7 @@
 	        <figure>
 		        <p style="line-height:1;font-size:0.75em;">Install from npm:</p>
 		        <pre><code class="bash">
-npm install axe-core --save-dev
+  npm install axe-core --save-dev
 		        </code></pre>
 		    </figure>
 		    <figure class="fragment">
@@ -259,22 +259,23 @@ npm install axe-core --save-dev
 
 	        <section>
 		        <h3 class="h2-style">aXe unit test demo</h3>
+		        <p><a href="https://github.com/marcysutton/HFA-axecore-unit-demo">https://github.com/marcysutton/HFA-axecore-unit-demo</a></p>
 	        </section>
 
 	        <section>
 		        <h3 class="h2-style">What is axe-webdriverjs?</h3>
-		        <p>A library that injects axe-core into Selenium Webdriver instances</p>
+		        <p>An open source library that injects axe-core into Selenium Webdriver instances</p>
 		       </section>
 
 	        <section>
 		        <h3>Integration testing with axe-webdriverjs</h3>
 		        <figure>
 			        <pre><code class="bash">
-	npm install axe-webdriverjs --save-dev
+  npm install axe-webdriverjs --save-dev
 			        </code></pre>
-			    </figure>
-			    <figure>	  					
-			    <pre><code class="javascript">
+				    </figure>
+				    <figure>	  					
+				    <pre><code class="javascript">
   var AxeBuilder = require('axe-webdriverjs'),
       WebDriver = require('selenium-webdriver');
  
@@ -284,55 +285,56 @@ npm install axe-core --save-dev
  
   driver
     .get('https://www.hillaryclinton.com/')
-    .then(function () {
+    .then(function (done) {
       AxeBuilder(driver)
         .analyze(function (results) {
           expect(results.violations.length).toBe(0);
+          done();
         });
     });
 						</code></pre>
 					</figure>
-		        </section>
+        </section>
 
-		        <section>
-			        <h3 class="h2-style">aXe integration test demo</h3>
-		        </section>
+        <section>
+	        <h3 class="h2-style">aXe integration test demo</h3>
+	        <p><a href="https://github.com/marcysutton/axe-webdriverjs-demo/tree/hfa-demo">https://github.com/marcysutton/axe-webdriverjs-demo/tree/hfa-demo</a></p>
+        </section>
 
-		        <section>
-			        <h2 class="h1-style">Get help from experts</h2>
-			        <!-- Talk about knowledge/experience built into rules/checks -->
-			        <!-- Promote Github repository/issues list, Gitter -->
-		        </section>
+        <section>
+	        <h2 class="h1-style">Get help from experts</h2>
+	        <!-- Talk about knowledge/experience built into rules/checks -->
+	        <!-- Promote Github repository/issues list, Gitter -->
+        </section>
 
-		        <section>
-		        	<h3 style="margin-top: -3em;">The aXe Team <br>
-		        	<span class="subhead">(besides yours truly)</span></h3>
-		        	<div class="imgCarousel" id="maintainers">
-		        		<button data-alt="Dylan Barrell"><img data-src="img/dylanb.jpg" alt="Dylan Barrell"></button>
-		        		<button data-alt="Wilco Fiers"><img data-src="img/wilcof.jpg" alt="Wilco Fiers"></button>
-		        		<button data-alt="Ian Kelly"><img data-src="img/iank.jpg" alt="Ian Kelly"></button>
-		        	</div>
-		        <!-- Dylan, Wilco and Ian profile photos -->
-		        </section>
+        <section>
+        	<h3 style="margin-top: -3em;">The aXe Team <br>
+        	<span class="subhead">(besides yours truly)</span></h3>
+        	<div class="imgCarousel" id="maintainers">
+        		<button data-alt="Dylan Barrell"><img data-src="img/dylanb.jpg" alt="Dylan Barrell"></button>
+        		<button data-alt="Wilco Fiers"><img data-src="img/wilcof.jpg" alt="Wilco Fiers"></button>
+        		<button data-alt="Ian Kelly"><img data-src="img/iank.jpg" alt="Ian Kelly"></button>
+        	</div>
+        </section>
 
-		        <section data-background="img/gitter-axe-core.jpg" data-background-position="right">
-			        <div>
-			        <h3 style="height:1000px">
-		        		<a style="display:block;width:100%;height:100%;" href="https://gitter.im/dequelabs/axe-core" title="Opens in a new window" target="_blank"><span class="offscreen">axe-core Gitter page</span></a>
-		        	</h3>
-		        	</div>
-		        </section>
+        <section data-background="img/gitter-axe-core.jpg" data-background-position="right top" data-background-cover="cover">
+	        <div>
+	        <h3 style="height:1000px">
+        		<a style="display:block;width:100%;height:100%;" href="https://gitter.im/dequelabs/axe-core" title="Opens in a new window" target="_blank"><span class="offscreen">axe-core Gitter page</span></a>
+        	</h3>
+        	</div>
+        </section>
 
-		        <section data-background="img/axe-github-issues.jpg" data-background-position="right">
-			        <div>
-			        <h3 style="height:1000px">
-		        		<a style="display:block;width:100%;height:100%;" href="https://github.com/dequelabs/axe-core/issues" title="Opens in a new window" target="_blank"><span class="offscreen">axe-core Github issues page</span></a>
-		        	</h3>
-		        	</div>
-		        </section>
+        <section data-background="img/axe-github-issues.jpg" data-background-position="right">
+	        <div>
+	        <h3 style="height:1000px">
+        		<a style="display:block;width:100%;height:100%;" href="https://github.com/dequelabs/axe-core/issues" title="Opens in a new window" target="_blank"><span class="offscreen">axe-core Github issues page</span></a>
+        	</h3>
+        	</div>
+        </section>
 
 				<section data-background-color="#ffffff">
-					<h2>Thanks!</h2>
+					<h2>Questions?</h2>
 					<h3 class="subhead"><a href="http://twitter.com/marcysutton">twitter.com/marcysutton</a></h3>
 					<h3 class="subhead"><a href="http://github.com/marcysutton">github.com/marcysutton</a></h3>
 					<img data-src="img/deque_logo_600p.jpg" alt="" style="width: 320px;">
