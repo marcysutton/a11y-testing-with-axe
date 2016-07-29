@@ -37,7 +37,12 @@ body {
 .reveal h3,
 .reveal h4,
 .reveal h5,
-.reveal h6 {
+.reveal h6,
+.reveal .h1-style,
+.reveal .h2-style,
+.reveal .h3-style,
+.reveal .h4-style,
+.reveal .h5-style {
 	margin: $headingMargin;
 	color: $headingColor;
 
@@ -52,12 +57,13 @@ body {
 	word-wrap: break-word;
 }
 
-.reveal h1 {font-size: $heading1Size; }
-.reveal h2 {font-size: $heading2Size; }
-.reveal h3 {font-size: $heading3Size; }
-.reveal h4 {font-size: $heading4Size; }
+.reveal h1, .reveal .h1-style {font-size: $heading1Size; }
+.reveal h2, .reveal .h2-style {font-size: $heading2Size; }
+.reveal h3, .reveal .h3-style {font-size: $heading3Size; }
+.reveal h4, .reveal .h4-style {font-size: $heading4Size; }
 
-.reveal h1 {
+.reveal h1,
+.reveal .h1-style {
 	text-shadow: $heading1TextShadow;
 }
 

@@ -4,7 +4,7 @@
  * By Hakim El Hattab, http://hakim.se
  */
 @import url(../../lib/font/source-sans-pro/source-sans-pro.css);
-section.has-dark-background, section.has-dark-background h1, section.has-dark-background .reveal .h1-style, .reveal section.has-dark-background .h1-style, section.has-dark-background h2, section.has-dark-background .reveal .h2-style, .reveal section.has-dark-background .h2-style, section.has-dark-background h3, section.has-dark-background .reveal .h3-style, .reveal section.has-dark-background .h3-style, section.has-dark-background h4, section.has-dark-background .reveal .h4-style, .reveal section.has-dark-background .h4-style, section.has-dark-background .reveal .subhead, .reveal section.has-dark-background .subhead, section.has-dark-background h5, section.has-dark-background h6 {
+section.has-dark-background, section.has-dark-background h1, section.has-dark-background h2, section.has-dark-background h3, section.has-dark-background h4, section.has-dark-background .reveal .subhead, .reveal section.has-dark-background .subhead, section.has-dark-background h5, section.has-dark-background h6 {
   color: #fff; }
 
 /*********************************************
@@ -33,19 +33,24 @@ body {
 /*********************************************
  * HEADERS
  *********************************************/
-.reveal h1, .reveal .h1-style,
-.reveal h2, .reveal .h2-style,
-.reveal h3, .reveal .h3-style,
-.reveal h4, .reveal .h4-style, .reveal .subhead,
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4, .reveal .subhead,
 .reveal h5,
-.reveal h6 {
+.reveal h6,
+.reveal .h1-style,
+.reveal .h2-style,
+.reveal .h3-style,
+.reveal .h4-style,
+.reveal .h5-style {
   margin: 0 0 20px 0;
   color: #222;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: none;
   text-shadow: none;
   word-wrap: break-word; }
 
@@ -58,10 +63,11 @@ body {
 .reveal h3, .reveal .h3-style {
   font-size: 1.3em; }
 
-.reveal h4, .reveal .h4-style, .reveal .subhead {
+.reveal h4, .reveal .subhead, .reveal .h4-style {
   font-size: 1em; }
 
-.reveal h1, .reveal .h1-style {
+.reveal h1,
+.reveal .h1-style {
   text-shadow: none; }
 
 /*********************************************
@@ -285,14 +291,35 @@ body {
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
 
-.reveal h1, .reveal .h1-style, .reveal h2, .reveal .h2-style, .reveal h3, .reveal .h3-style, .reveal h4, .reveal .h4-style, .reveal .subhead, .reveal h5, .reveal h6 {
-  text-transform: none; }
+.reveal ul.code {
+  border: 2px solid;
+  font-family: Menlo, Courier, monospace;
+  list-style: none; }
+  .reveal ul.code li {
+    border-top: 2px  solid;
+    padding: 10px; }
+    .reveal ul.code li:first-child {
+      border-top: none; }
+    .reveal ul.code li:nth-child(2n) {
+      background-color: #eae5e5; }
 
 .reveal .subhead {
   display: block;
   font-size: 0.75em;
   font-style: italic;
   font-weight: bold; }
+
+.reveal .border-after {
+  display: inline-block;
+  position: relative; }
+  .reveal .border-after:after {
+    border-bottom: 4px solid;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: -10px;
+    width: 100%; }
 
 .reveal .all-caps {
   text-transform: uppercase; }
@@ -311,9 +338,12 @@ body {
 .reveal .controls {
   bottom: 110px; }
 
-.reveal pre code {
+.reveal pre code, .reveal code {
   font-family: Menlo, Courier, monospace;
   max-height: 520px; }
+
+.reveal pre.large {
+  font-size: 0.75em; }
 
 .reveal figure.code {
   box-sizing: border-box;
@@ -444,7 +474,7 @@ body {
     display: none; }
   .deque-title-slide .left img.deque {
     max-width: 300px; }
-  .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
+  .deque-title-slide .right h1 {
     font-size: 1.5em; } }
 
 @media screen and (max-width: 600px) {
@@ -456,7 +486,7 @@ body {
     float: none;
     margin: 0 auto;
     width: 90%; }
-    .deque-title-slide .right h1, .deque-title-slide .right .reveal .h1-style, .reveal .deque-title-slide .right .h1-style {
+    .deque-title-slide .right h1 {
       font-size: 1.5em;
       text-align: center; }
     .deque-title-slide .right p {

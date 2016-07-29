@@ -38,30 +38,36 @@ body {
 .reveal h3,
 .reveal h4,
 .reveal h5,
-.reveal h6 {
+.reveal h6,
+.reveal .h1-style,
+.reveal .h2-style,
+.reveal .h3-style,
+.reveal .h4-style,
+.reveal .h5-style {
   margin: 0 0 20px 0;
   color: #222;
   font-family: "Source Sans Pro", Helvetica, sans-serif;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
+  text-transform: none;
   text-shadow: none;
   word-wrap: break-word; }
 
-.reveal h1 {
+.reveal h1, .reveal .h1-style {
   font-size: 2.5em; }
 
-.reveal h2 {
+.reveal h2, .reveal .h2-style {
   font-size: 1.6em; }
 
-.reveal h3 {
+.reveal h3, .reveal .h3-style {
   font-size: 1.3em; }
 
-.reveal h4 {
+.reveal h4, .reveal .h4-style {
   font-size: 1em; }
 
-.reveal h1 {
+.reveal h1,
+.reveal .h1-style {
   text-shadow: none; }
 
 /*********************************************

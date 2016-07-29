@@ -9,20 +9,21 @@ $tablet: 'screen and (max-width: 1024px)';
 $mobile: 'screen and (max-width: 600px)';
 
 .reveal {
-  h1, h2, h3, h4, h5, h6 {
-    text-transform: none;
-  }
-  .h1-style {
-    @extend h1;
-  }
-  .h2-style {
-    @extend h2;
-  }
-  .h3-style {
-    @extend h3;
-  }
-  .h4-style {
-    @extend h4;
+  ul.code {
+    border: 2px solid;
+    font-family: $codeFont;
+    list-style: none;
+    li {
+      border-top: 2px  solid;
+      padding: 10px;
+
+      &:first-child {
+        border-top: none;
+      }
+      &:nth-child(2n) {
+        background-color: #eae5e5;      
+      }
+    }
   }
   .subhead {
     @extend h4;
@@ -30,6 +31,20 @@ $mobile: 'screen and (max-width: 600px)';
     font-size: 0.75em;
     font-style: italic;
     font-weight: bold;
+  }
+  .border-after {
+    display: inline-block;
+    position: relative;
+
+    &:after {
+      border-bottom: 4px solid;
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: -10px;
+      width: 100%;
+    }
   }
   .all-caps {
     text-transform: uppercase;
@@ -51,9 +66,12 @@ $mobile: 'screen and (max-width: 600px)';
     bottom: 110px;
   }
 
-  pre code {
-    font-family: Menlo, Courier, monospace;
+  pre code, code {
+    font-family: $codeFont;
     max-height: 520px;
+  }
+  pre.large {
+    font-size: 0.75em;
   }
   figure.code {
     box-sizing: border-box;
