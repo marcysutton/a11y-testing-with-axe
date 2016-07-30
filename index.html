@@ -87,12 +87,6 @@
 						<li><strong>Cognitive:</strong> Autism, learning, TBI, memory, attention</li>
 					</ul>
 				</section>
-
-				<section>
-					<h3 class="h2-style">WCAG &amp; Section 508</h3>
-					<h4 class="h3-style"><span class="subhead">Guidelines for creating accessible websites</span></h4>
-				</section>
-
 		        <section>
 			        <h2>
 			        	Accessibility &amp; Automated Testing
@@ -109,6 +103,17 @@
 			        </aside>
 		        </section>
 
+				<section data-background-image="img/wcag-section508.png">
+					<div style="display: inline-block; background-color: #fff; padding: 0.5em;">
+						<h3 class="h2-style">WCAG &amp; Section 508</h3>
+						<h4 class="h3-style"><span class="subhead">Guidelines and rules for creating accessible websites</span></h4>
+					</div>
+					<aside class="notes">
+					WCAG = guidelines
+					Section 508 = required for gov't agencies
+					</aside>
+				</section>
+
 		        <section>
 					<h2>The A11Y Testing Situation</h2>
 					<p>We can automate testing in browsers, but not assistive technologies (yet).</p>
@@ -117,6 +122,18 @@
 
 		        <section data-background-image="img/axe-tag-cloud.png" data-transition="fade-in">
 			        <h2 class="h1-style" style="background-color: #fff; display: inline-block; margin-bottom: 0.5em;">Test low-hanging fruit</h2>
+		        </section>
+
+		        <section>
+		        	<h3 class="h2-style">Easy wins</h3>
+		        	<p><em>Use tools to help you find:</em></p>
+			        <ul>
+		        		<li>Lacking keyboard support</li>
+		        		<li>Missing labels</li>
+		        		<li>Invalid ARIA attributes</li>
+		        		<li>Color contrast</li>
+		        		<li>&hellip;and more!</li>
+		        	</ul>
 		        </section>
 
 		        <section data-background-image="img/npm-axe-core.png">
@@ -136,7 +153,7 @@
 		        </section>
 
 		        </section>
-		        <section data-background-image="img/github-axe-rules.png">
+		        <section data-background-image="img/github-axe-rules.png" data-background-position="top center">
 		        	<h3 style="height:1000px">
 		        		<a style="display:block;width:100%;height:100%;" href="https://github.com/dequelabs/axe-core/blob/master/doc/rule-descriptions.md" title="Opens in a new window" target="_blank"><span class="offscreen">axe-core rule descriptions on Github</span></a>
 		        	</h3>
@@ -155,6 +172,25 @@
 		        	<h3 style="height:1000px">
 		        		<a style="display:block;width:100%;height:100%;" href="https://addons.mozilla.org/en-us/firefox/addon/axe-devtools/" title="Opens in a new window" target="_blank"><span class="offscreen">aXe firefox extension</span></a>
 		        	</h3>
+		        </section>
+
+		        <section>
+			        <h2>Document accessibility intent<br>
+			        <span class="subhead">~and~</span>
+				        prevent regressions<br>  
+				        <span class="subhead border-after">with <span >test coverage</span></span>
+			        </h2>
+			    </section>
+
+			    <section>
+			    	<h3 class="h2-style">Tools for the job</h3>
+			        <ul>
+				        <li><a href="https://www.npmjs.com/package/axe-core">axe-core</a></li>
+				        <li><a href="https://www.npmjs.com/package/axe-webdriverjs">axe-webdriverjs</a></li>
+			        </ul>
+		        <!-- show npm workflow with packages / scripts -->
+		        <!-- axe-webdriverjs demo -->
+		        <!-- axe-core unit test demo -->
 		        </section>
 
 		        <section>
@@ -189,31 +225,13 @@
 			     	<p><small><a href="https://github.com/dequelabs/axe-core/blob/master/doc/API.md#a11ycheck-parameters">https://github.com/dequelabs/axe-core/blob/master/doc/API.md#a11ycheck-parameters</a></small></p>
 		        </section>
 
-		        <section>
-			        <h2>Document accessibility intent<br>
-			        <span class="subhead">~and~</span>
-				        prevent regressions<br>  
-				        <span class="subhead border-after">with <span >test coverage</span></span>
-			        </h2>
-			    </section>
-
-			    <section>
-			    	<h3 class="h2-style">Tools for the job</h3>
-			        <ul>
-				        <li><a href="https://www.npmjs.com/package/axe-core">axe-core</a></li>
-				        <li><a href="https://www.npmjs.com/package/axe-webdriverjs">axe-webdriverjs</a></li>
-			        </ul>
-		        <!-- show npm workflow with packages / scripts -->
-		        <!-- axe-webdriverjs demo -->
-		        <!-- axe-core unit test demo -->
-		        </section>
 
 		        <section>
 			        <h3>Unit testing with axe-core</h3>
 			        <figure>
 				        <p style="line-height:1;font-size:0.75em;">Install from npm:</p>
 				        <pre><code class="bash">
-	  npm install axe-core --save-dev
+  npm install axe-core --save-dev
 				        </code></pre>
 				    </figure>
 				    <figure class="fragment">
@@ -309,8 +327,8 @@
         	</div>
         </section>
 
-				<section data-background-color="#ffffff">
-					<h2>Questions?</h2>
+				<section>
+					<h2>To a11y and beyond!</h2>
 					<h3 class="subhead"><a href="http://twitter.com/marcysutton">twitter.com/marcysutton</a></h3>
 					<h3 class="subhead"><a href="http://github.com/marcysutton">github.com/marcysutton</a></h3>
 					<img data-src="img/deque_logo_600p.jpg" alt="" style="width: 320px;">
